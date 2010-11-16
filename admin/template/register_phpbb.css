@@ -1,0 +1,82 @@
+/**
+ * Informations box in administration
+ */
+.warning, .info{
+  margin: 5px;
+  padding: 50px 50px 10px 10px;
+  font-weight:bold;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  padding:15px 60px 0pt 60px;
+  min-height: 54px;
+}
+
+.warning {
+  color: #f22;
+  background-color: #ffd5dc;
+  background-image: url(icon/warning.png);
+}
+
+.info{
+  margin: 5px;
+  padding: 50px 50px 10px 10px;
+  font-weight:bold;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  padding: 5px 60px 0pt 60px;
+  min-height: 20px;
+}
+
+.info {
+  color: #0a0;
+  background-color:#c2f5c2;
+}
+
+.mod{
+  margin: 5px;
+  padding: 50px 50px 10px 10px;
+  font-weight:bold;
+  background-repeat: no-repeat;
+  background-position: 5px 5px;
+  padding: 5px 60px 0pt 60px;
+  min-height: 20px;
+}
+
+.mod {
+  color: #f22;
+  background-color: #ffd5dc;
+}
+
+/* Bloc expand-collapse instructions */
+.instructionBlockHeaderCollapsed, .instructionBlockHeaderExpanded
+{
+  background-color:#111;
+  background-position:15px center;
+  background-repeat:no-repeat;
+  color:#ff3363;
+  cursor:pointer;
+  font-size:110%;
+  overflow:hidden;
+  padding:8px 41px;
+  text-align: left;
+}
+
+.instructionBlockHeaderCollapsed span, .instructionBlockHeaderExpanded span
+{
+  border-bottom: none;
+}
+ 
+.instructionBlockHeaderCollapsed
+{
+  background-image: url(./icon/expand.gif);
+}
+
+.instructionBlockHeaderExpanded
+{
+  background-image: url(./icon/collapse.gif);
+}
+
+.instructionBlockContent
+{
+  padding:0 15px 15px;
+}
