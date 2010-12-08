@@ -11,7 +11,7 @@ Author URI: http://www.infernoweb.net
 /*
 --------------------------------------------------------------------------------
   Author     : Pierric, Eric
-    email    : pierrot007@gmail.com, lucifer@infernoweb.net
+    email    : pierrot007@gmail.com, eric@piwigo.org
     website  : http://www.infernoweb.net
     PWG user : http://fr.piwigo.org/forum/profile.php?id=5784, http://forum.phpwebgallery.net/profile.php?id=1106
 --------------------------------------------------------------------------------
