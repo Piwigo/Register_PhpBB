@@ -114,21 +114,18 @@ WHERE BINARY username = BINARY '".$row['username']."'
     {
       $msg_error_PhpBB_Dup .= '<br>id:'.$subrow['user_id'].'='.stripslashes($subrow['username']).' ('.$subrow['user_email'].')';
 
-      if ( !is_adviser() )
-      {
-        $msg_error_PhpBB_Dup .= ' <a href="';
+      $msg_error_PhpBB_Dup .= ' <a href="';
 
-        $msg_error_PhpBB_Dup .= add_url_params($page_Register_PhpBB_admin, array(
-          'action' => 'del_user',
-          'user_id' => $subrow['user_id'],
-        ));
+      $msg_error_PhpBB_Dup .= add_url_params($page_Register_PhpBB_admin, array(
+        'action' => 'del_user',
+        'user_id' => $subrow['user_id'],
+      ));
 
-        $msg_error_PhpBB_Dup .= '" title="'.l10n('Del_User').stripslashes($subrow['username']).'"';
+      $msg_error_PhpBB_Dup .= '" title="'.l10n('Del_User').stripslashes($subrow['username']).'"';
 
-        $msg_error_PhpBB_Dup .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+      $msg_error_PhpBB_Dup .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-        $msg_error_PhpBB_Dup .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').$subrow['username'].'" /></a>';
-      }
+      $msg_error_PhpBB_Dup .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').$subrow['username'].'" /></a>';
     }
   }
 
@@ -160,22 +157,19 @@ AND pwg.mail_address = bb.user_email
   {
     $msg_error_Link_Break .= '<br>'.l10n('Error_Link_Break').stripslashes($row['pwg_user']).' ('.$row['pwg_mail'].')';
 
-    if ( !is_adviser() )
-    {
-      $msg_error_Link_Break .= ' <a href="';
+    $msg_error_Link_Break .= ' <a href="';
 
-      $msg_error_Link_Break .= add_url_params($page_Register_PhpBB_admin, array(
-        'action'   => 'new_link',
-        'pwg_id' => $row['pwg_id'],
-        'bb_id' => $row['bb_id'],
-      ));
+    $msg_error_Link_Break .= add_url_params($page_Register_PhpBB_admin, array(
+      'action'   => 'new_link',
+      'pwg_id' => $row['pwg_id'],
+      'bb_id' => $row['bb_id'],
+    ));
 
-      $msg_error_Link_Break .= '" title="'.l10n('New_Link').stripslashes($row['pwg_user']).'"';
+    $msg_error_Link_Break .= '" title="'.l10n('New_Link').stripslashes($row['pwg_user']).'"';
 
-      $msg_error_Link_Break .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_Link_Break .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_Link_Break .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_break.png" alt="'.l10n('New_Link').stripslashes($row['pwg_user']).'" /></a>';
-    }
+    $msg_error_Link_Break .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_break.png" alt="'.l10n('New_Link').stripslashes($row['pwg_user']).'" /></a>';
   }
 
   if ($msg_error_Link_Break == '')
@@ -199,35 +193,32 @@ WHERE pwg.username <> bb.username
   {
     $msg_error_Link_Bad .= '<br>'.l10n('Error_Link_Del').stripslashes($row['pwg_user']).' ('.$row['pwg_mail'].')'.' -- '.stripslashes($row['bb_user']).' ('.$row['bb_mail'].')';
 
-    if ( !is_adviser() )
-    {
-      $msg_error_Link_Bad .= ' <a href="';
+    $msg_error_Link_Bad .= ' <a href="';
 
-      $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
-        'action'   => 'link_del',
-        'pwg_id' => $row['pwg_id'],
-        'bb_id'  => $row['bb_id'],
-      ));
+    $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
+      'action'   => 'link_del',
+      'pwg_id' => $row['pwg_id'],
+      'bb_id'  => $row['bb_id'],
+    ));
 
-      $msg_error_Link_Bad .= '" title="'.l10n('Link_Del').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'"';
+    $msg_error_Link_Bad .= '" title="'.l10n('Link_Del').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'"';
 
-      $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_delete.png" alt="'.l10n('Link_Del').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'" /></a>';
+    $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_delete.png" alt="'.l10n('Link_Del').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'" /></a>';
 
-      $msg_error_Link_Bad .= ' -- <a href="';
+    $msg_error_Link_Bad .= ' -- <a href="';
 
-      $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
+    $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
         'action' => 'sync_user',
         'username' => stripslashes($row['pwg_user']),
       ));
 
-      $msg_error_Link_Bad .= '" title="'.l10n('Sync_User').stripslashes($row['pwg_user']).' --> '.stripslashes($row['bb_user']).'"';
+    $msg_error_Link_Bad .= '" title="'.l10n('Sync_User').stripslashes($row['pwg_user']).' --> '.stripslashes($row['bb_user']).'"';
 
-      $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/arrow_switch.png" alt="'.l10n('Sync_User').stripslashes($row['pwg_user']).' --> '.stripslashes($row['bb_user']).'" /></a>';
-    }
+    $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/arrow_switch.png" alt="'.l10n('Sync_User').stripslashes($row['pwg_user']).' --> '.stripslashes($row['bb_user']).'" /></a>';
   }
 
 
@@ -250,20 +241,17 @@ OR id_user_pwg NOT IN (
   {
     $msg_error_Link_Bad .= '<br>'.l10n('Error_Link_Dead').$Compteur['nbr_dead'];
 
-    if ( !is_adviser() )
-    {
-      $msg_error_Link_Bad .= ' <a href="';
+    $msg_error_Link_Bad .= ' <a href="';
 
-      $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
-        'action'   => 'link_dead',
-      ));
+    $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
+      'action'   => 'link_dead',
+    ));
 
-      $msg_error_Link_Bad .= '" title="'.l10n('Link_Dead').$Compteur['nbr_dead'].'"';
+    $msg_error_Link_Bad .= '" title="'.l10n('Link_Dead').$Compteur['nbr_dead'].'"';
 
-      $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_delete.png" alt="'.l10n('Link_Dead').$Compteur['nbr_dead'].'" /></a>';
-    }
+    $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_delete.png" alt="'.l10n('Link_Dead').$Compteur['nbr_dead'].'" /></a>';
   }
 
   $query = "
@@ -281,22 +269,19 @@ HAVING COUNT(*) > 1
   {
     $msg_error_Link_Bad .= '<br>'.l10n('Error_Link_Dup').$row['nbr_dup'].' = '.stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).')';
 
-    if ( !is_adviser() )
-    {
-      $msg_error_Link_Bad .= ' <a href="';
+    $msg_error_Link_Bad .= ' <a href="';
 
-      $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
-        'action'   => 'new_link',
-        'pwg_id' => $row['pwg_id'],
-        'bb_id' => $row['bb_id'],
-      ));
+    $msg_error_Link_Bad .= add_url_params($page_Register_PhpBB_admin, array(
+      'action'   => 'new_link',
+      'pwg_id' => $row['pwg_id'],
+      'bb_id' => $row['bb_id'],
+    ));
 
-      $msg_error_Link_Bad .= '" title="'.l10n('Link_Dup').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'"';
+    $msg_error_Link_Bad .= '" title="'.l10n('Link_Dup').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'"';
 
-      $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_Link_Bad .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_error.png" alt="'.l10n('Link_Dup').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'" /></a>';
-    }
+    $msg_error_Link_Bad .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/link_error.png" alt="'.l10n('Link_Dup').stripslashes($row['pwg_user']).' -- '.stripslashes($row['bb_user']).'" /></a>';
   }
 
   if ($msg_error_Link_Bad == '')
@@ -323,20 +308,17 @@ ORDER BY LOWER(pwg.username)
     {
       $msg_error_Synchro .= '<br>'.l10n('Error_Synchro').stripslashes($row['username']);
 
-      if ( !is_adviser() )
-      {
-        $msg_error_Synchro .= ' <a href="';
+      $msg_error_Synchro .= ' <a href="';
 
-        $msg_error_Synchro .= add_url_params($page_Register_PhpBB_admin, array(
-          'action' => 'sync_user',
-          'username' => stripslashes($row['username']),
-        ));
+      $msg_error_Synchro .= add_url_params($page_Register_PhpBB_admin, array(
+        'action' => 'sync_user',
+        'username' => stripslashes($row['username']),
+      ));
 
-        $msg_error_Synchro .= '" title="'.l10n('Sync_User').stripslashes($row['username']).'"';
+      $msg_error_Synchro .= '" title="'.l10n('Sync_User').stripslashes($row['username']).'"';
 
-        $msg_error_Synchro .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
-        $msg_error_Synchro .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_refresh.png" alt="'.l10n('Sync_User').stripslashes($row['username']).'" /></a>';
-      }
+      $msg_error_Synchro .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+      $msg_error_Synchro .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_refresh.png" alt="'.l10n('Sync_User').stripslashes($row['username']).'" /></a>';
 
       if ($row['pwg_pwd'] != $row['bb_pwd'])
         $msg_error_Synchro .= '<br>'.l10n('Error_Synchro_Pswd');
@@ -376,21 +358,18 @@ ORDER BY LOWER(username)
   {
     $msg_error_PWG2PhpBB .= '<br>'.l10n('Error_PWG2PhpBB').stripslashes($row['username']).' ('.$row['mail_address'].')';
 
-    if ( !is_adviser() )
-    {
-      $msg_error_PWG2PhpBB .= ' <a href="';
+    $msg_error_PWG2PhpBB .= ' <a href="';
 
-      $msg_error_PWG2PhpBB .= add_url_params($page_Register_PhpBB_admin, array(
-        'action' => 'add_user',
-        'username' => stripslashes($row['username']),
-      ));
+    $msg_error_PWG2PhpBB .= add_url_params($page_Register_PhpBB_admin, array(
+      'action' => 'add_user',
+      'username' => stripslashes($row['username']),
+    ));
 
-      $msg_error_PWG2PhpBB .= '" title="'.l10n('Add_User').stripslashes($row['username']).'" ';
+    $msg_error_PWG2PhpBB .= '" title="'.l10n('Add_User').stripslashes($row['username']).'" ';
 
-      $msg_error_PWG2PhpBB .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_PWG2PhpBB .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_PWG2PhpBB .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_add.png" alt="'.l10n('Add_User').stripslashes($row['username']).'" /></a>';
-    }
+    $msg_error_PWG2PhpBB .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_add.png" alt="'.l10n('Add_User').stripslashes($row['username']).'" /></a>';
   }
 
   if ($msg_error_PWG2PhpBB == '')
@@ -418,21 +397,18 @@ ORDER BY LOWER(username)
   {
     $msg_error_PhpBB2PWG .= '<br>'.l10n('Error_PhpBB2PWG').stripslashes($row['username']).' ('.$row['user_email'].')';
 
-    if ( !is_adviser() )
-    {
-      $msg_error_PhpBB2PWG .= ' <a href="';
+    $msg_error_PhpBB2PWG .= ' <a href="';
 
-      $msg_error_PhpBB2PWG .= add_url_params($page_Register_PhpBB_admin, array(
-        'action' => 'del_user',
-        'user_id' => $row['user_id'],
-      ));
+    $msg_error_PhpBB2PWG .= add_url_params($page_Register_PhpBB_admin, array(
+      'action' => 'del_user',
+      'user_id' => $row['user_id'],
+    ));
 
-      $msg_error_PhpBB2PWG .= '" title="'.l10n('Del_User').stripslashes($row['username']).'"';
+    $msg_error_PhpBB2PWG .= '" title="'.l10n('Del_User').stripslashes($row['username']).'"';
 
-      $msg_error_PhpBB2PWG .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+    $msg_error_PhpBB2PWG .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-      $msg_error_PhpBB2PWG .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($row['username']).'" /></a>';
-    }
+    $msg_error_PhpBB2PWG .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($row['username']).'" /></a>';
   }
 
   if ($msg_error_PhpBB2PWG == '')
@@ -471,7 +447,7 @@ ORDER BY LOWER(username)
 // |                            Actions process
 // +-----------------------------------------------------------------------+
 
-if ( isset($_GET['action']) and ($_GET['action']=='link_dead') and !is_adviser() )
+if (isset($_GET['action']) and ($_GET['action']=='link_dead'))
 {
   $query = "
 DELETE FROM ".Register_PhpBB_ID_TABLE."
@@ -489,7 +465,7 @@ OR id_user_pwg NOT IN (
 
   Audit_PWG_PhpBB();
 }
-else if ( isset($_GET['action']) and ($_GET['action']=='link_del') and isset($_GET['pwg_id']) and isset($_GET['bb_id']) and !is_adviser() )
+else if (isset($_GET['action']) and ($_GET['action']=='link_del') and isset($_GET['pwg_id']) and isset($_GET['bb_id']))
 {
   $query = "
 DELETE FROM ".Register_PhpBB_ID_TABLE."
@@ -501,13 +477,13 @@ AND id_user_PhpBB = ".$_GET['bb_id']."
 
   Audit_PWG_PhpBB();
 }
-else if ( isset($_GET['action']) and ($_GET['action']=='new_link') and isset($_GET['pwg_id']) and isset($_GET['bb_id']) and !is_adviser() )
+else if (isset($_GET['action']) and ($_GET['action']=='new_link') and isset($_GET['pwg_id']) and isset($_GET['bb_id']))
 {
   PhpBB_Linkuser($_GET['pwg_id'], $_GET['bb_id']);
 
   Audit_PWG_PhpBB();
 }
-else if ( isset($_GET['action']) and ($_GET['action']=='sync_user') and isset($_GET['username']) and !is_adviser() )
+else if (isset($_GET['action']) and ($_GET['action']=='sync_user') and isset($_GET['username']))
 {
   $query = "
 SELECT id AS id_pwg, username, password, mail_address
@@ -525,7 +501,7 @@ LIMIT 1
 
   Audit_PWG_PhpBB();
 }
-else if ( isset($_GET['action']) and ($_GET['action']=='add_user') and isset($_GET['username']) and !is_adviser() )
+else if (isset($_GET['action']) and ($_GET['action']=='add_user') and isset($_GET['username']))
 {
   $query = "
 SELECT id, username, password, mail_address
@@ -541,7 +517,7 @@ LIMIT 1
 
     Audit_PWG_PhpBB();
 }
-else if ( isset($_GET['action']) and ($_GET['action']=='del_user') and isset($_GET['id']) and !is_adviser() )
+else if (isset($_GET['action']) and ($_GET['action']=='del_user') and isset($_GET['id']))
 {
   PhpBB_Deluser( $_GET['id'], true );
 
@@ -571,7 +547,7 @@ switch ($page['tab'])
 
 	case 'manage':
 
-  if (isset($_POST['submit']) and !is_adviser() and isset($_POST['PhpBB_prefix']) and isset($_POST['PhpBB_admin']) and isset($_POST['PhpBB_guest']) and isset($_POST['PhpBB_confirm']) and isset($_POST['PhpBB_details']))
+  if (isset($_POST['submit']) and isset($_POST['PhpBB_prefix']) and isset($_POST['PhpBB_admin']) and isset($_POST['PhpBB_guest']) and isset($_POST['PhpBB_confirm']) and isset($_POST['PhpBB_details']))
   {
 
 /* Configuration controls */
@@ -696,7 +672,7 @@ LIMIT 1
 
   $conf_Register_PhpBB = isset($conf['Register_PhpBB']) ? explode(";" , $conf['Register_PhpBB']) : array();
 
-  if ( isset($_POST['Migration']) and !is_adviser() )
+  if (isset($_POST['Migration']))
   {
     array_push($page['infos'], l10n('Mig_Start').'<br><br>');
 
@@ -791,7 +767,7 @@ WHERE username = '".$conf_Register_PhpBB[1]."'
 
 	case 'Synchro':
 
-  if ( isset($_POST['Synchro']) and !is_adviser() )
+  if (isset($_POST['Synchro']))
   {
     global $page,$conf, $errors;
 
@@ -851,21 +827,18 @@ WHERE BINARY username = BINARY '".$row['username']."'
       {
         $msg_error_PhpBB_Dup .= '<br>id:'.$subrow['user_id'].'='.stripslashes($subrow['username']).' ('.$subrow['user_email'].')';
 
-        if ( !is_adviser() )
-        {
-          $msg_error_PhpBB_Dup .= ' <a href="';
+        $msg_error_PhpBB_Dup .= ' <a href="';
 
-          $msg_error_PhpBB_Dup .= add_url_params($page_Register_PhpBB_admin, array(
-            'action' => 'del_user',
-            'user_id' => $subrow['user_id'],
-          ));
+        $msg_error_PhpBB_Dup .= add_url_params($page_Register_PhpBB_admin, array(
+          'action' => 'del_user',
+          'user_id' => $subrow['user_id'],
+        ));
 
-          $msg_error_PhpBB_Dup .= '" title="'.l10n('Del_User').stripslashes($subrow['username']).'"';
+        $msg_error_PhpBB_Dup .= '" title="'.l10n('Del_User').stripslashes($subrow['username']).'"';
 
-          $msg_error_PhpBB_Dup .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+        $msg_error_PhpBB_Dup .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-          $msg_error_PhpBB_Dup .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($subrow['username']).'" /></a>';
-        }
+        $msg_error_PhpBB_Dup .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($subrow['username']).'" /></a>';
       }
     }
 
@@ -1080,21 +1053,18 @@ ORDER BY LOWER(username)
       {
         $msg_error_PhpBB2PWG .= '<br>'.l10n('Error_PhpBB2PWG').stripslashes($row['username']).' ('.$row['user_email'].')';
 
-        if ( !is_adviser() )
-        {
-          $msg_error_PhpBB2PWG .= ' <a href="';
+        $msg_error_PhpBB2PWG .= ' <a href="';
 
-          $msg_error_PhpBB2PWG .= add_url_params($page_Register_PhpBB_admin, array(
-            'action' => 'del_user',
-            'user_id' => $row['user_id'],
-          ));
+        $msg_error_PhpBB2PWG .= add_url_params($page_Register_PhpBB_admin, array(
+          'action' => 'del_user',
+          'user_id' => $row['user_id'],
+        ));
 
-          $msg_error_PhpBB2PWG .= '" title="'.l10n('Del_User').stripslashes($row['username']).'"';
+        $msg_error_PhpBB2PWG .= '" title="'.l10n('Del_User').stripslashes($row['username']).'"';
 
-          $msg_error_PhpBB2PWG .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
+        $msg_error_PhpBB2PWG .= $conf_Register_PhpBB[3]=='false' ?  ' onclick="return confirm(\''.l10n('Are you sure?').'\');" ' : ' ';
 
-          $msg_error_PhpBB2PWG .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($row['username']).'" /></a>';
-        }
+        $msg_error_PhpBB2PWG .= '><img src="'.REGPHPBB_PATH.'/admin/template/icon/user_delete.png" alt="'.l10n('Del_User').stripslashes($row['username']).'" /></a>';
       }
 
       if ($msg_error_PhpBB2PWG == '')
