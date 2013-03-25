@@ -1,0 +1,1 @@
+Liez l'inscription des utilisateurs de Piwigo avec votre forum PhpBB
